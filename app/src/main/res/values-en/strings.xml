@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Combee</string>
+    <string name="bg_home_description">Haidresser image</string>
+    <string name="home_title">Discover your freedom</string>
+    <string name="welcome">Welcome</string>
+    <string name="connect">Sign in</string>
+    <string name="register">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="please_fill_all">You must complete all input before submit</string>
+    <string name="strong_password">Your password is too easy, please fill in stronger password</string>
+    <string name="wrong_email">Please, fill in a correct email</string>
+    <string name="gender">Gender</string>
+    <string name="price">Price</string>
+    <string name="logo">Logo</string>
+    <string name="confirm">Confirm</string>
+    <string name="child">Child</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">combee</string>
+    <string name="bg_home_description">Image coiffeur</string>
+    <string name="home_title">Découvrez votre liberté</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="connect">Connexion</string>
+    <string name="register">Inscription</string>
+    <string name="email">Adresse Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="firstname">Prénom</string>
+    <string name="lastname">Nom de famille</string>
+    <string name="please_fill_all">Vous devez completer tous les champs avant d\'envoyer la demande</string>
+    <string name="strong_password">Votre mot de passe est trop facile. Veuillez en choisir un plus fort</string>
+    <string name="wrong_email">Veuillez entrer une adresse email correcte</string>
+    <string name="gender">Sexe</string>
+    <string name="price">Prix</string>
+    <string name="logo">Logo</string>
+    <string name="confirm">Confirmer</string>
+    <string name="child">Enfant</string>
+    <string name="man">Homme</string>
+    <string name="woman">Femme</string>
+</resources>
