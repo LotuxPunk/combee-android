@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saved_gender_woman">saved_gender_woman</string>
+    <string name="saved_gender_man">saved_gender_man</string>
+    <string name="saved_gender_child">saved_gender_child</string>
+
+    <string name="saved_price_one">saved_price_one</string>
+    <string name="saved_price_two">saved_price_two</string>
+    <string name="saved_price_three">saved_price_three</string>
+</resources>
