@@ -1,9 +1,11 @@
-package com.example.combee;
+package com.example.combee.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.combee.R;
 
 public class BusinessActivity extends AppCompatActivity {
 

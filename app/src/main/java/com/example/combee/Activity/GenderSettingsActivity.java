@@ -1,4 +1,4 @@
-package com.example.combee;
+package com.example.combee.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+
+import com.example.combee.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,8 +35,7 @@ public class GenderSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gender_settings);
 
         ButterKnife.bind(this);
-
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref =  getSharedPreferences(getString(R.string.saved_preference_file), Context.MODE_PRIVATE);
 
         checkBoxWoman.setChecked(sharedPref.getBoolean(getString(R.string.saved_gender_woman), false));
         checkBoxMan.setChecked(sharedPref.getBoolean(getString(R.string.saved_gender_man), false));

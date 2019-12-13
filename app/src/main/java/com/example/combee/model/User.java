@@ -1,4 +1,4 @@
-package model;
+package com.example.combee.model;
 
 import java.util.ArrayList;
 

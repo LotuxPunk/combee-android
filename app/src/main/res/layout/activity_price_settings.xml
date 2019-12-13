@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PriceSettingsActivity">
+    tools:context=".Activity.PriceSettingsActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -19,36 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/r_group_price"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-        <RadioButton
-            android:id="@+id/r_price_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/price_1" />
-
-        <RadioButton
-            android:id="@+id/r_price_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/price_2" />
-
-        <RadioButton
-            android:id="@+id/r_price_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/price_3" />
-    </RadioGroup>
-
     <Button
         android:id="@+id/btn_price_save"
         android:layout_width="0dp"
@@ -59,5 +29,41 @@
         android:text="@string/confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r_group_price" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_price_three" />
+
+    <CheckBox
+        android:id="@+id/cb_price_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/price_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <CheckBox
+        android:id="@+id/cb_price_two"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/price_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_price_one" />
+
+    <CheckBox
+        android:id="@+id/cb_price_three"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/price_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_price_two" />
 </androidx.constraintlayout.widget.ConstraintLayout>

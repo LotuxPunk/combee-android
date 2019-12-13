@@ -1,12 +1,17 @@
-package com.example.combee;
+package com.example.combee.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +27,55 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Business;
+
+import com.example.combee.DAO.BusinessDAO;
+import com.example.combee.DAO.FormDAO.BusinessForm;
+import com.example.combee.R;
+import com.example.combee.model.Business;
 
 
 public class BusinessListActivity extends AppCompatActivity {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        new LoadPerson().execute();
+    }
+
+    private class LoadPerson extends AsyncTask<String, Void, ArrayList<Business>> {
+        @Override
+        protected ArrayList<Business> doInBackground(String... strings) {
+            Log.i("my-app", "ICI");
+
+            SharedPreferences sharedPref =  getSharedPreferences(getString(R.string.saved_preference_file), Context.MODE_PRIVATE);
+
+            BusinessForm businessForm = new BusinessForm();
+            businessForm.setForMan(sharedPref.getBoolean(getString(R.string.saved_gender_man), false));
+            businessForm.setForWoman(sharedPref.getBoolean(getString(R.string.saved_gender_woman), false));
+            businessForm.setForChild(sharedPref.getBoolean(getString(R.string.saved_gender_child), false));
+
+            businessForm.setPriceOne(sharedPref.getBoolean(getString(R.string.saved_price_one), false));
+            businessForm.setPriceTwo(sharedPref.getBoolean(getString(R.string.saved_price_two), false));
+            businessForm.setPriceThree(sharedPref.getBoolean(getString(R.string.saved_price_three), false));
+
+            ArrayList<Business> t = new ArrayList<>();
+            try {
+                t = BusinessDAO.GetAllBusinesses(businessForm);
+            } catch (Exception e) {
+                Log.i("my-app", e.toString());
+            }
+
+            return t;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Business> businesses) {
+            super.onPostExecute(businesses);
+
+            Log.i("my-app", "c fait");
+        }
+    }
 
     public interface OnItemSelectedListener {
         void onItemSelected(Integer position);
@@ -120,4 +170,5 @@ public class BusinessListActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="saved_preference_file">saved_preference_file</string>
+
     <string name="saved_gender_woman">saved_gender_woman</string>
     <string name="saved_gender_man">saved_gender_man</string>
     <string name="saved_gender_child">saved_gender_child</string>

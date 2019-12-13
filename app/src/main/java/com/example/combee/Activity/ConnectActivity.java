@@ -1,4 +1,4 @@
-package com.example.combee;
+package com.example.combee.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.combee.R;
+import com.example.combee.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

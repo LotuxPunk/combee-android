@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BusinessActivity"></activity>
-        <activity android:name=".GenderSettingsActivity" />
-        <activity android:name=".PriceSettingsActivity" />
-        <activity android:name=".BusinessListActivity">
+        <activity android:name=".Activity.BusinessActivity"></activity>
+        <activity android:name=".Activity.GenderSettingsActivity" />
+        <activity android:name=".Activity.PriceSettingsActivity" />
+        <activity android:name=".Activity.BusinessListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ConnectActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.ConnectActivity" />
     </application>
 
 </manifest>
