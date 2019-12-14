@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:configChanges="orientation|screenSize|keyboardHidden">
         <activity android:name=".Activity.BusinessActivity"></activity>
         <activity android:name=".Activity.GenderSettingsActivity" />
         <activity android:name=".Activity.PriceSettingsActivity" />
@@ -21,8 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.RegisterActivity">
+        </activity>
+        <activity android:name=".Activity.MainActivity">
+        </activity>
         <activity android:name=".Activity.ConnectActivity" />
     </application>
 

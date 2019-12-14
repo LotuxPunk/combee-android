@@ -2,6 +2,7 @@ package com.example.combee.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,12 +53,12 @@ public class RegisterActivity extends AppCompatActivity {
                     // Verifier les fameuses conditions
 
                     if(!Util.isValidEmail(emailInput.getText().toString())) {
-                        errorStr.append(getResources().getString(R.string.wrong_email));
+                        errorStr.append("\n- " + getResources().getString(R.string.wrong_email));
                         isError = true;
                     }
 
                     if(!Util.isStrongPassword(passwordInput.getText().toString())) {
-                        errorStr.append(getResources().getString(R.string.strong_password));
+                        errorStr.append("\n- " + getResources().getString(R.string.strong_password));
                         isError = true;
                     }
                 }
@@ -65,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Affichage erreur
                 if(isError) {
-                    Toast.makeText(v.getContext(), errorStr.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), errorStr.toString() + "\n", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.i("my-app", "On peut fetch");
                 }

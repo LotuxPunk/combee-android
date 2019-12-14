@@ -10,6 +10,6 @@ public class Util {
     }
 
     public static boolean isStrongPassword(String password) {
-        return password.matches("^[a-zA-Z]\\w{3,14}$");
+        return password.matches("^((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)).+$");
     }
 }
