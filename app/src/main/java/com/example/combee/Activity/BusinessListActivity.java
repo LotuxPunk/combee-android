@@ -1,7 +1,6 @@
 package com.example.combee.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,19 +33,23 @@ import com.example.combee.model.Business;
 
 
 public class BusinessListActivity extends AppCompatActivity {
+    @BindView(R.id.rvContacts) RecyclerView businessListView;
+    @BindView(R.id.btn_price_settings) Button btnPriceSettings;
+    @BindView(R.id.btn_gender_settings) Button btnGenderSettings;
+
+    // A changer
+    private ArrayList<Business> businesses;
+    private BusinessAdapter businessAdapter;
 
     @Override
     protected void onStart() {
         super.onStart();
-
         new LoadPerson().execute();
     }
 
     private class LoadPerson extends AsyncTask<String, Void, ArrayList<Business>> {
         @Override
         protected ArrayList<Business> doInBackground(String... strings) {
-            Log.i("my-app", "ICI");
-
             SharedPreferences sharedPref =  getSharedPreferences(getString(R.string.saved_preference_file), Context.MODE_PRIVATE);
 
             BusinessForm businessForm = new BusinessForm();
@@ -59,19 +61,22 @@ public class BusinessListActivity extends AppCompatActivity {
             businessForm.setPriceTwo(sharedPref.getBoolean(getString(R.string.saved_price_two), false));
             businessForm.setPriceThree(sharedPref.getBoolean(getString(R.string.saved_price_three), false));
 
-            ArrayList<Business> t = new ArrayList<>();
+            ArrayList<Business> listBusiness = new ArrayList<>();
             try {
-                t = BusinessDAO.GetAllBusinesses(businessForm);
+                listBusiness = BusinessDAO.GetAllBusiness();
+                businesses = listBusiness;
             } catch (Exception e) {
-                Log.i("my-app", e.toString());
+                Log.i("my-app", e.getMessage());
             }
 
-            return t;
+            return listBusiness;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Business> businesses) {
-            super.onPostExecute(businesses);
+        protected void onPostExecute(ArrayList<Business> listBusiness) {
+            super.onPostExecute(listBusiness);
+
+            businessAdapter.setUsers(listBusiness);
 
             Log.i("my-app", "c fait");
         }
@@ -108,7 +113,7 @@ public class BusinessListActivity extends AppCompatActivity {
             LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.business_list_item, parent, false);
             BusinessViewHolder vh = new BusinessViewHolder(v, position -> {
                 // MAUVAIS : BERK
-                Business touchedBusiness = Business.getAll().get(position);
+                Business touchedBusiness = businesses.get(position);
 
                 Intent intent = new Intent(parent.getContext(), BusinessActivity.class);
                 intent.putExtra("BUSINESS_ID", touchedBusiness.getId());
@@ -123,7 +128,7 @@ public class BusinessListActivity extends AppCompatActivity {
             holder.txtBusinessName.setText(u.getName());
             holder.txtBusinessLocality.setText(u.getLocality());
 
-            Glide.with(holder.itemView.getContext()).load("https://lepetitjournal.com/sites/default/files/styles/main_article/public/2019-08/keren-perez-LpKso44P3eg-unsplash.jpg?itok=kJq2IGVr").into(holder.imgViewPicture);
+            Glide.with(holder.itemView.getContext()).load(u.getPicture()).into(holder.imgViewPicture);
         }
 
         @Override
@@ -137,21 +142,18 @@ public class BusinessListActivity extends AppCompatActivity {
         }
     }
 
-    @BindView(R.id.rvContacts) RecyclerView businessListView;
-    @BindView(R.id.btn_price_settings) Button btnPriceSettings;
-    @BindView(R.id.btn_gender_settings) Button btnGenderSettings;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_list);
 
+        businesses = new ArrayList<>();
+        businessAdapter = new BusinessAdapter();
+
         ButterKnife.bind(this);
 
-        BusinessAdapter adapter = new BusinessAdapter();
-        adapter.setUsers(Business.getAll());
         businessListView.setLayoutManager(new LinearLayoutManager(this));
-        businessListView.setAdapter(adapter);
+        businessListView.setAdapter(businessAdapter);
 
         btnPriceSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +161,6 @@ public class BusinessListActivity extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), PriceSettingsActivity.class);
                 startActivity(intent);
             }
-
         });
 
         btnGenderSettings.setOnClickListener(new View.OnClickListener() {

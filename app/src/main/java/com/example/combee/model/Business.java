@@ -5,27 +5,16 @@ import java.util.ArrayList;
 public class Business {
     private Integer id;
     private String name;
-    private String description;
-    private String zipCode;
-    private String street;
     private String locality;
-    private String phoneNumber;
+    private String picture;
+    private Double averageReview;
 
-    public Business(Integer id, String name, String description, String zipCode, String street, String locality, Double posX, Double posY, String phoneNumber) {
+    public Business(Integer id, String name, String locality, String picture, Double averageReview) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.zipCode = zipCode;
-        this.street = street;
         this.locality = locality;
-        this.phoneNumber = phoneNumber;
-    }
-
-
-    public static ArrayList<Business> getAll() {
-        ArrayList<Business> businesses = new ArrayList<>();
-
-        return businesses;
+        this.picture = picture;
+        this.averageReview = averageReview;
     }
 
     public Integer getId() {
@@ -44,30 +33,6 @@ public class Business {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public String getLocality() {
         return locality;
     }
@@ -76,11 +41,19 @@ public class Business {
         this.locality = locality;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Double getAverageReview() {
+        return averageReview;
+    }
+
+    public void setAverageReview(Double averageReview) {
+        this.averageReview = averageReview;
     }
 }
