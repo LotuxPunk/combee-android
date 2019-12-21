@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.example.combee.DAO.BusinessDAO;
-import com.example.combee.DAO.FormDAO.BusinessForm;
+import com.example.combee.FormDAO.BusinessForm;
 import com.example.combee.R;
+import com.example.combee.dataAccess.BusinessDAO;
 import com.example.combee.model.Business;
 
 
@@ -37,17 +37,17 @@ public class BusinessListActivity extends AppCompatActivity {
     @BindView(R.id.btn_price_settings) Button btnPriceSettings;
     @BindView(R.id.btn_gender_settings) Button btnGenderSettings;
 
-    // A changer
     private ArrayList<Business> businesses;
     private BusinessAdapter businessAdapter;
+    private BusinessDAO businessDAO;
 
     @Override
     protected void onStart() {
         super.onStart();
-        new LoadPerson().execute();
+        new LoadBusinesses().execute();
     }
 
-    private class LoadPerson extends AsyncTask<String, Void, ArrayList<Business>> {
+    private class LoadBusinesses extends AsyncTask<String, Void, ArrayList<Business>> {
         @Override
         protected ArrayList<Business> doInBackground(String... strings) {
             SharedPreferences sharedPref =  getSharedPreferences(getString(R.string.saved_preference_file), Context.MODE_PRIVATE);
@@ -63,7 +63,7 @@ public class BusinessListActivity extends AppCompatActivity {
 
             ArrayList<Business> listBusiness = new ArrayList<>();
             try {
-                listBusiness = BusinessDAO.GetAllBusiness();
+                listBusiness = businessDAO.GetAllBusiness(businessForm);
                 businesses = listBusiness;
             } catch (Exception e) {
                 Log.i("my-app", e.getMessage());
@@ -76,7 +76,7 @@ public class BusinessListActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Business> listBusiness) {
             super.onPostExecute(listBusiness);
 
-            businessAdapter.setUsers(listBusiness);
+            businessAdapter.notifyDataSetChanged();
 
             Log.i("my-app", "c fait");
         }
@@ -105,18 +105,16 @@ public class BusinessListActivity extends AppCompatActivity {
     }
 
     private class BusinessAdapter extends RecyclerView.Adapter<BusinessViewHolder> {
-        private ArrayList<Business> myBusinesses;
 
         @NonNull
         @Override
         public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.business_list_item, parent, false);
             BusinessViewHolder vh = new BusinessViewHolder(v, position -> {
-                // MAUVAIS : BERK
                 Business touchedBusiness = businesses.get(position);
 
                 Intent intent = new Intent(parent.getContext(), BusinessActivity.class);
-                intent.putExtra("BUSINESS_ID", touchedBusiness.getId());
+                intent.putExtra(getString(R.string.list_to_business_id), touchedBusiness.getId());
                 startActivity(intent);
             });
             return vh;
@@ -124,21 +122,16 @@ public class BusinessListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {
-            Business u = myBusinesses.get(position);
-            holder.txtBusinessName.setText(u.getName());
-            holder.txtBusinessLocality.setText(u.getLocality());
+            Business b = businesses.get(position);
+            holder.txtBusinessName.setText(b.getName());
+            holder.txtBusinessLocality.setText(b.getLocality());
 
-            Glide.with(holder.itemView.getContext()).load(u.getPicture()).into(holder.imgViewPicture);
+            Glide.with(holder.itemView.getContext()).load(b.getPicture()).into(holder.imgViewPicture);
         }
 
         @Override
         public int getItemCount() {
-            return myBusinesses == null ? 0 : myBusinesses.size();
-        }
-
-        public void setUsers(ArrayList<Business> myBusinesses) {
-            this.myBusinesses = myBusinesses;
-            notifyDataSetChanged();
+            return businesses == null ? 0 : businesses.size();
         }
     }
 
@@ -149,6 +142,7 @@ public class BusinessListActivity extends AppCompatActivity {
 
         businesses = new ArrayList<>();
         businessAdapter = new BusinessAdapter();
+        businessDAO = new BusinessDAO();
 
         ButterKnife.bind(this);
 

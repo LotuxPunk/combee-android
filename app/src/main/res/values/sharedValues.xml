@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="saved_preference_file">saved_preference_file</string>
+    <string name="saved_preference_file" translatable="false">saved_preference_file</string>
 
-    <string name="saved_gender_woman">saved_gender_woman</string>
-    <string name="saved_gender_man">saved_gender_man</string>
-    <string name="saved_gender_child">saved_gender_child</string>
+    <string name="saved_gender_woman" translatable="false">saved_gender_woman</string>
+    <string name="saved_gender_man" translatable="false">saved_gender_man</string>
+    <string name="saved_gender_child" translatable="false">saved_gender_child</string>
 
-    <string name="saved_price_one">saved_price_one</string>
-    <string name="saved_price_two">saved_price_two</string>
-    <string name="saved_price_three">saved_price_three</string>
+    <string name="saved_price_one" translatable="false">saved_price_one</string>
+    <string name="saved_price_two" translatable="false">saved_price_two</string>
+    <string name="saved_price_three" translatable="false">saved_price_three</string>
 </resources>

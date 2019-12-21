@@ -1,4 +1,4 @@
-package com.example.combee.DAO.FormDAO;
+package com.example.combee.FormDAO;
 
 public class BusinessForm {
     private Boolean isForMan;
