@@ -27,6 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import com.example.combee.R;
+import com.example.combee.Util;
 import com.example.combee.dataAccess.BusinessDAO;
 import com.example.combee.dataAccess.fromDaoModel.BusinessForm;
 import com.example.combee.model.Business;
@@ -66,7 +67,7 @@ public class BusinessListActivity extends AppCompatActivity {
                 listBusiness = businessDAO.GetAllBusiness(businessForm);
                 businesses = listBusiness;
             } catch (Exception e) {
-                Log.i("my-app", e.getMessage());
+                Log.i("my-app", "ICI");
             }
 
             return listBusiness;
@@ -75,10 +76,7 @@ public class BusinessListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<Business> listBusiness) {
             super.onPostExecute(listBusiness);
-
             businessAdapter.notifyDataSetChanged();
-
-            Log.i("my-app", "c fait");
         }
     }
 
@@ -89,12 +87,14 @@ public class BusinessListActivity extends AppCompatActivity {
     private class BusinessViewHolder extends RecyclerView.ViewHolder {
         public TextView txtBusinessName;
         public TextView txtBusinessLocality;
+        public TextView txtBusinessPrice;
         public ImageView imgViewPicture;
 
         public BusinessViewHolder(@NonNull View itemView, OnItemSelectedListener listener) {
             super(itemView);
-            txtBusinessName = itemView.findViewById(R.id.txtBusinessListName);
-            txtBusinessLocality = itemView.findViewById(R.id.txtBusinessListLocality);
+            txtBusinessName = itemView.findViewById(R.id.business_list_txt_name);
+            txtBusinessLocality = itemView.findViewById(R.id.business_list_txt_locality);
+            txtBusinessPrice = itemView.findViewById(R.id.business_list_txt_price);
             imgViewPicture = itemView.findViewById(R.id.imgViewPicture);
 
             itemView.setOnClickListener(e -> {
@@ -105,7 +105,6 @@ public class BusinessListActivity extends AppCompatActivity {
     }
 
     private class BusinessAdapter extends RecyclerView.Adapter<BusinessViewHolder> {
-
         @NonNull
         @Override
         public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -117,6 +116,7 @@ public class BusinessListActivity extends AppCompatActivity {
                 intent.putExtra(getString(R.string.list_to_business_id), touchedBusiness.getId());
                 startActivity(intent);
             });
+
             return vh;
         }
 
@@ -125,7 +125,7 @@ public class BusinessListActivity extends AppCompatActivity {
             Business b = businesses.get(position);
             holder.txtBusinessName.setText(b.getName());
             holder.txtBusinessLocality.setText(b.getLocality());
-
+            holder.txtBusinessPrice.setText(Util.priceCategoryString(b.getPriceCategory()));
             Glide.with(holder.itemView.getContext()).load(b.getPicture()).into(holder.imgViewPicture);
         }
 

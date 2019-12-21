@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.combee.Util;
 import com.example.combee.dataAccess.fromDaoModel.BusinessForm;
 import com.example.combee.model.Business;
+import com.example.combee.model.FullBusiness;
 
 import org.json.*;
 
@@ -54,25 +55,14 @@ public class BusinessDAO {
         JSONArray jsonArray = new JSONArray((stringJSON));
 
         for(int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonBusiness = jsonArray.getJSONObject(i);
-
-            int id = jsonBusiness.getInt("id");
-            String name = jsonBusiness.getString("name");
-            String locality = jsonBusiness.getString("locality");
-            Double averageReview = jsonBusiness.getDouble("averageReview");
-
-            JSONArray pictureArray = jsonBusiness.getJSONArray("businessPicture");
-            String picture = pictureArray.getJSONObject(0) != null ? pictureArray.getJSONObject(0).getString("path") : null;
-
-            business = new Business(id, name, locality, picture, averageReview);
-            businesses.add(business);
+            businesses.add(jsonToBusiness(jsonArray.getJSONObject(i)));
         }
 
         return businesses;
     }
 
-    public Business GetBusiness(Integer id) throws Exception {
-        URL url = new URL(queryString + "/2");
+    public FullBusiness GetBusiness(Integer id) throws Exception {
+        URL url = new URL(queryString + "/1");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         Log.i("my-app", connection.getResponseCode() + "");
@@ -85,8 +75,31 @@ public class BusinessDAO {
         buffer.close();
         stringJSON = builder.toString();
 
-        Log.i("my-app", stringJSON);
+        JSONObject jsonBusiness = new JSONObject(stringJSON);
 
-        return null;
+        return jsonToFullBusiness(jsonBusiness);
+    }
+
+    private Business jsonToBusiness(JSONObject jsonBusiness) throws Exception {
+        Integer id = jsonBusiness.getInt("id");
+        String name = jsonBusiness.getString("name");
+        String locality = jsonBusiness.getString("locality");
+        Double averageReview = jsonBusiness.getDouble("averageReview");
+        Integer priceCategory = jsonBusiness.getInt("priceCategory");
+
+        JSONArray pictureArray = jsonBusiness.getJSONArray("businessPicture");
+        String picture = pictureArray.getJSONObject(0) != null ? pictureArray.getJSONObject(0).getString("path") : null;
+
+        return new Business(id, name, locality, picture, averageReview, priceCategory);
+    }
+
+    private FullBusiness jsonToFullBusiness(JSONObject jsonBusiness) throws Exception {
+        Business business = jsonToBusiness(jsonBusiness);
+
+        String description = jsonBusiness.getString("description");
+        String street = jsonBusiness.getString("street");
+        String zipCode = jsonBusiness.getString("zipCode");
+
+        return new FullBusiness(business.getId(), business.getName(), business.getLocality(), business.getPicture(), business.getAverageReview(), business.getPriceCategory(), description, street, zipCode);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.combee.model;
 
-import java.util.ArrayList;
 
 public class Business {
     private Integer id;
@@ -8,13 +7,15 @@ public class Business {
     private String locality;
     private String picture;
     private Double averageReview;
+    private Integer priceCategory;
 
-    public Business(Integer id, String name, String locality, String picture, Double averageReview) {
+    public Business(Integer id, String name, String locality, String picture, Double averageReview, Integer priceCategory) {
         this.id = id;
         this.name = name;
         this.locality = locality;
         this.picture = picture;
         this.averageReview = averageReview;
+        this.priceCategory = priceCategory;
     }
 
     public Integer getId() {
@@ -55,5 +56,13 @@ public class Business {
 
     public void setAverageReview(Double averageReview) {
         this.averageReview = averageReview;
+    }
+
+    public Integer getPriceCategory() {
+        return priceCategory;
+    }
+
+    public void setPriceCategory(Integer priceCategory) {
+        this.priceCategory = priceCategory;
     }
 }

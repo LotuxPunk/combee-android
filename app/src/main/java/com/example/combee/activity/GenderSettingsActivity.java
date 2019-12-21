@@ -1,33 +1,22 @@
 package com.example.combee.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-
 import com.example.combee.R;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class GenderSettingsActivity extends AppCompatActivity {
 
-    @BindView(R.id.cb_gender_woman)
-    CheckBox checkBoxWoman;
-
-    @BindView(R.id.cb_gender_man)
-    CheckBox checkBoxMan;
-
-    @BindView(R.id.cb_gender_child)
-    CheckBox checkBoxChild;
-
-    @BindView(R.id.btn_gender_save)
-    Button btnSave;
+    @BindView(R.id.cb_gender_woman) CheckBox checkBoxWoman;
+    @BindView(R.id.cb_gender_man) CheckBox checkBoxMan;
+    @BindView(R.id.cb_gender_child) CheckBox checkBoxChild;
+    @BindView(R.id.btn_gender_save) Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

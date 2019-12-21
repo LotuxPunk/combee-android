@@ -31,4 +31,5 @@
 
     <string name="list_to_business_id" translatable="false">business_id_passed</string>
     <string name="server_path" translatable="false">https://combeeapi.azurewebsites.net/api/v1.0/</string>
+    <string name="combee_path" translatable="false">https://combee.me/</string>
 </resources>

@@ -25,4 +25,12 @@ public class Util {
 
         return joined;
     }
+
+    public static String priceCategoryString(Integer nb) {
+        String strPrice = "";
+
+        for(int i = 0; i < nb; i++) strPrice += "€";
+
+        return strPrice;
+    }
 }

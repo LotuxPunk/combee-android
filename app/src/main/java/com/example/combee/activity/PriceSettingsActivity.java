@@ -1,35 +1,22 @@
 package com.example.combee.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-
 import com.example.combee.R;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PriceSettingsActivity extends AppCompatActivity {
 
-    @BindView(R.id.cb_price_one)
-    CheckBox checkBoxPriceOne;
-
-    @BindView(R.id.cb_price_two)
-    CheckBox checkBoxPriceTwo;
-
-    @BindView(R.id.cb_price_three)
-    CheckBox checkBoxPriceThree;
-
-    @BindView(R.id.btn_price_save)
-    Button btnSave;
+    @BindView(R.id.cb_price_one) CheckBox checkBoxPriceOne;
+    @BindView(R.id.cb_price_two) CheckBox checkBoxPriceTwo;
+    @BindView(R.id.cb_price_three) CheckBox checkBoxPriceThree;
+    @BindView(R.id.btn_price_save) Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
