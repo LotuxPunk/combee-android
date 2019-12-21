@@ -1,4 +1,4 @@
-package com.example.combee.Activity;
+package com.example.combee.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

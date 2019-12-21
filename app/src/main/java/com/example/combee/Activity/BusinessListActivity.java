@@ -1,4 +1,4 @@
-package com.example.combee.Activity;
+package com.example.combee.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

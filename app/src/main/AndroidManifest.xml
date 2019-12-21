@@ -12,21 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:configChanges="orientation|screenSize|keyboardHidden">
-        <activity android:name=".Activity.BusinessActivity"></activity>
-        <activity android:name=".Activity.GenderSettingsActivity" />
-        <activity android:name=".Activity.PriceSettingsActivity" />
-        <activity android:name=".Activity.BusinessListActivity">
+        <activity android:name=".activity.BusinessActivity"></activity>
+        <activity android:name=".activity.GenderSettingsActivity" />
+        <activity android:name=".activity.PriceSettingsActivity" />
+        <activity android:name=".activity.BusinessListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegisterActivity">
+        <activity android:name=".activity.RegisterActivity">
         </activity>
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".activity.MainActivity">
         </activity>
-        <activity android:name=".Activity.ConnectActivity" />
+        <activity android:name=".activity.ConnectActivity" />
     </application>
 
 </manifest>
