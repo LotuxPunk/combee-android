@@ -34,7 +34,7 @@ public class BusinessActivity extends AppCompatActivity {
             try {
                 businessDAO.GetBusiness(1);
             } catch (Exception e) {
-                Log.i("my-app", e.getCause().toString());
+                Log.i("my-app", "ERREUR");
             }
 
             return null;
