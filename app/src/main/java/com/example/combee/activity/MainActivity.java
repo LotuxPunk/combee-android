@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btnConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BusinessListActivity.class);
+                Intent intent = new Intent(v.getContext(), ConnectActivity.class);
                 startActivity(intent);
             }
         });

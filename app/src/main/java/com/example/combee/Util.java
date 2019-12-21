@@ -3,7 +3,7 @@ package com.example.combee;
 import java.util.ArrayList;
 
 public class Util {
-    public static boolean isInputEmpty(String inputValue) {
+    public static boolean isEmpty(String inputValue) {
         return inputValue.matches("");
     }
 
@@ -16,21 +16,14 @@ public class Util {
     }
 
     public static String joinedString(ArrayList<String> strings) {
-        int i = 0;
         String joined = "?";
-        while(i < strings.size()) {
-            joined += "&" + strings.get(i);
-            i++;
-        }
-
+        for(int i = 0; i < strings.size(); i++) joined += "&" + strings.get(i);
         return joined;
     }
 
     public static String priceCategoryString(Integer nb) {
         String strPrice = "";
-
         for(int i = 0; i < nb; i++) strPrice += "€";
-
         return strPrice;
     }
 }

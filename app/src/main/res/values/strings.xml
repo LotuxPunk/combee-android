@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Combee</string>
+    <string name="app_name" translatable="false">Combee</string>
     <string name="logo">Logo</string>
 
     <string name="bg_home_description">Haidresser image</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">combee</string>
     <string name="bg_home_description">Image coiffeur</string>
     <string name="home_title">Découvrez votre liberté</string>
     <string name="welcome">Bienvenue</string>
@@ -21,4 +20,6 @@
     <string name="man">Homme</string>
     <string name="woman">Femme</string>
     <string name="see_more">Voir plus</string>
+    <string name="bad_request_error">Une ou plusieurs erreur de formulaire sont survenues. Veuillez réessayer</string>
+    <string name="conflict_error">Un utilisateur existe déjà. Veuillez réessayer avec un autre identifiant</string>
 </resources>

@@ -1,15 +1,11 @@
 package com.example.combee.dataAccess;
 
 import android.util.Log;
-
-
 import com.example.combee.Util;
 import com.example.combee.dataAccess.fromDaoModel.BusinessForm;
 import com.example.combee.model.Business;
 import com.example.combee.model.FullBusiness;
-
 import org.json.*;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

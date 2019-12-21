@@ -165,5 +165,4 @@ public class BusinessListActivity extends AppCompatActivity {
             }
         });
     }
-
 }

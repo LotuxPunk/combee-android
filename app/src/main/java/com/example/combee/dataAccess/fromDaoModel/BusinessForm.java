@@ -9,8 +9,7 @@ public class BusinessForm {
     private Boolean isPriceTwo;
     private Boolean isPriceThree;
 
-    public BusinessForm() {
-    }
+    public BusinessForm() { }
 
     public Boolean getForMan() {
         return isForMan;
