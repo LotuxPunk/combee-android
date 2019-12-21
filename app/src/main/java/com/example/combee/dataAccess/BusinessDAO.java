@@ -1,10 +1,10 @@
 package com.example.combee.dataAccess;
 
 import android.util.Log;
-import android.widget.Switch;
 
-import com.example.combee.FormDAO.BusinessForm;
+
 import com.example.combee.Util;
+import com.example.combee.dataAccess.fromDaoModel.BusinessForm;
 import com.example.combee.model.Business;
 
 import org.json.*;

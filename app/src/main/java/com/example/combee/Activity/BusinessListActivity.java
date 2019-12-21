@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.example.combee.FormDAO.BusinessForm;
 import com.example.combee.R;
 import com.example.combee.dataAccess.BusinessDAO;
+import com.example.combee.dataAccess.fromDaoModel.BusinessForm;
 import com.example.combee.model.Business;
 
 
